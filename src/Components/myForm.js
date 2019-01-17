@@ -26,6 +26,7 @@ class MyForm extends React.Component {
         this.setState({ [event.target.name]: isCheckBox ? event.target.checked : event.target.value })
     };
 
+    /* QUESTION: Sera que da para consolidar os handele Events num so? */
     handleChangeOtherTitle = (event, {value} ) => {
         this.setState({othertitle: {value}})
     }

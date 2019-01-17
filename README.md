@@ -1,5 +1,3 @@
-
-
 ## TO DO LIST 
 
 A project on the back of TodoMVC and based on the tutorial by Ben Awad. 
@@ -45,3 +43,5 @@ myForm.js
     handleSubmit = (event) => {
         //It will prevent to refresh the page and pass values to the URL
         event.preventDefault();    
+
+5. validation form (for that I did a new form just to make it simple and styled it with Semantic Ui just for fun)
