@@ -1,28 +1,60 @@
 import React from 'react';
 import { Form, Card, Segment } from 'semantic-ui-react';
 
+const initialState = {
+    name: '',
+    email: '',
+    password: '',
+    nameError: '',
+    emailError: '',
+    passwordError: ''
+};
+
+
 class ValidationForm extends React.Component {
 
-    state = {
-        name: '',
-        email: '',
-        password: '',
-        nameError: '',
-        emailError: '',
-        passwordError: ''
-    }
-
+    state = initialState;
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
-    }
+    };
+
+    validate = () => {
+        /* let nameError= ''; */
+        let emailError= '';
+        /* let passwordError= ''; */
+
+        
+        if (!this.state.email.includes("@")) {
+            emailError = "invalid email";
+        }
+        
+        // We need to return false not to run the console.log but also true for it to run otherwise we can't console.log
+        if (emailError) {
+            this.setState({ emailError });
+            return false;
+        }
+        return true;
+    };
+
 
     handleSubmit = () => {
-        console.log(this.state);
+        const isValid = this.validate();
+        if (isValid) {
+            debugger
+            console.log(this.state);
+            
+            //QUESTION: porque eh que isto nao esta a fazer o reset do valores do form?
+            //set the stat to an initial sate (for that to happen I need to create a new const with all the sate of this component)
+            this.setState(initialState);
+            console.log(this.state);
+            debugger
 
-    }
+        }
+    };
+
 
     render() {
         return (
