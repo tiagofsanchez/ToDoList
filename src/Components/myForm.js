@@ -11,6 +11,7 @@ const options = [
 
 class MyForm extends React.Component {
 
+
     state = {
         name: '',
         text: '',
@@ -53,16 +54,18 @@ class MyForm extends React.Component {
 
     render() {
 
+        const { name , text , rememberMe , title } = this.sate;
+        
         return (
             <Segment raised>
                 <Form onSubmit={this.handleSubmit}>
 
                     <Form.Input
                         name='name'
-                        value={this.state.name}
+                        value={name}
                         onChange={this.handleChange}
                         placeholder='Your name...'
-                        label='First name'
+                        label='Your name'
                     />
                     <Form.TextArea
                         name='text'
@@ -73,7 +76,8 @@ class MyForm extends React.Component {
                     <input
                         name='rememberMe'
                         type="checkbox"
-                        checked={this.state.rememberMe} onChange={event => this.handleChange(event, 'rememberMe', true)}
+                        checked={this.state.rememberMe} 
+                        onChange={event => this.handleChange(event, 'rememberMe', true)}
                     />
                     <Form.Group>
                        
@@ -88,7 +92,7 @@ class MyForm extends React.Component {
                             value= { this.state.value }
                         />  
                        
-                        <select
+                        {/* <select
                             name='title'
                             value={this.state.title}
                             onChange={this.handleChange}>
@@ -96,7 +100,7 @@ class MyForm extends React.Component {
                             <option>Miss.</option>
                             <option>Ms.</option>
                             <option>Mrs.</option>
-                        </select>
+                        </select> */}
                     </Form.Group>
 
                     <Form.Button>Submit</Form.Button>

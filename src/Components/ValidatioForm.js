@@ -10,7 +10,6 @@ const initialState = {
     passwordError: ''
 };
 
-
 class ValidationForm extends React.Component {
 
     state = initialState;
@@ -23,14 +22,13 @@ class ValidationForm extends React.Component {
 
     validate = () => {
         /* let nameError= ''; */
-        let emailError= '';
+        let emailError = '';
         /* let passwordError= ''; */
 
-        
+
         if (!this.state.email.includes("@")) {
             emailError = "invalid email";
         }
-        
         // We need to return false not to run the console.log but also true for it to run otherwise we can't console.log
         if (emailError) {
             this.setState({ emailError });
@@ -43,21 +41,19 @@ class ValidationForm extends React.Component {
     handleSubmit = () => {
         const isValid = this.validate();
         if (isValid) {
-            debugger
             console.log(this.state);
-            
-            //QUESTION: porque eh que isto nao esta a fazer o reset do valores do form?
             //set the stat to an initial sate (for that to happen I need to create a new const with all the sate of this component)
             this.setState(initialState);
             console.log(this.state);
-            debugger
-
         }
     };
 
-
     render() {
+        
+        const { name , email , password , nameError , emailError , passwordError  } = this.state
+        
         return (
+
             <Card color='blue'>
                 <Card.Content>
                     <Card.Header >
@@ -71,16 +67,17 @@ class ValidationForm extends React.Component {
                                     name='name'
                                     onChange={this.handleChange}
                                     placeholder='Your name...'
+                                    value = {name}
                                 />
-                               
+
                                 {/* This will be conditional rendering, but we will not need it here as the state is null */}
-                                {this.state.nameError ?
+                                {nameError ?
                                     <div>
-                                        {this.state.nameError}
+                                        {nameError}
                                     </div>
                                     : null
                                 }
-                            
+
                             </Form.Field>
                             <Form.Field>
                                 <label>Email</label>
@@ -88,9 +85,10 @@ class ValidationForm extends React.Component {
                                     name='email'
                                     onChange={this.handleChange}
                                     placeholder='Your email...'
+                                    value={email}
                                 />
                                 <div>
-                                    {this.state.emailError}
+                                    {emailError}
                                 </div>
                             </Form.Field>
                             <Form.Field>
@@ -99,9 +97,10 @@ class ValidationForm extends React.Component {
                                     name='password'
                                     onChange={this.handleChange}
                                     placeholder='Your Password'
+                                    value={password}
                                 />
                                 <div>
-                                    {this.state.passwordError}
+                                    {passwordError}
                                 </div>
                             </Form.Field>
                             <Form.Button color='blue'>Submit</Form.Button>

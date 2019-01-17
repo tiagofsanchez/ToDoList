@@ -4,18 +4,15 @@ import 'semantic-ui-css/semantic.min.css'
 import ToDoList from './Components/ToDoList'
 import ValidationForm from './Components/ValidatioForm';
 import { Segment,Card } from 'semantic-ui-react';
+import MyForm from './Components/myForm';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-       <Card centered>
-       <Segment>
-       <ToDoList />
-       </Segment>
-       </Card>
-
+  
+           <MyForm />
       </div>
     );
   }

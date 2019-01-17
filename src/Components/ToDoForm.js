@@ -27,12 +27,15 @@ class ToDoForm extends React.Component {
     };
 
     render() {
+        
+        const { text } = this.state
+
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Form.Field>
                     <Form.Input
                         name='text'
-                        value={this.props.text}
+                        value={text}
                         onChange={this.handleChange}
                         placeholder='todo...'
                     />
