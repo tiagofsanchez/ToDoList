@@ -12,7 +12,7 @@ class FetchRandom extends React.Component {
     }
     
     componentDidMount () {
-        const url = 'https://api.randomuser.me/?results=5';
+        const url = 'https://api.randomuser.me/?results=10';
         fetch(url)
         .then(res => res.json())
         .then (data => {
@@ -20,7 +20,7 @@ class FetchRandom extends React.Component {
             console.log(this.state.personas);  
         }) 
     }
-
+  
     render() {
         
         const { loading , personas} = this.state
