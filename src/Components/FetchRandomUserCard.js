@@ -34,7 +34,7 @@ class FetchRandomWithCard extends React.Component {
                     :
                     
                         <div>
-                          
+                            
                             <Card.Group>
                             {personas.map(person => (
                                 <Card raised centered key={person.login.uuid} >
