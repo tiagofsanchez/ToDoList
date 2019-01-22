@@ -57,7 +57,6 @@ class MyFormDiogo extends React.Component {
     }
 
 
-
     render() {
 
         const { name , text , rememberMe , title } = this.state

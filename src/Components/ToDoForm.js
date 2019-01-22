@@ -14,15 +14,14 @@ class ToDoForm extends React.Component {
     };
    
     handleSubmit = () => {
-        console.log(this.state);
         this.props.onSubmit({
             id: shortid.generate(),
             text: this.state.text,
             complete: false
         });
-        //WHY this doesn't clear the state... quite strange!
+        //to clear the state of the component
         this.setState({
-                text: ""
+            text: ""
         })
     };
 

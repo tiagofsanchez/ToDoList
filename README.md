@@ -45,3 +45,21 @@ myForm.js
         event.preventDefault();    
 
 5. validation form (for that I did a new form just to make it simple and styled it with Semantic Ui just for fun)
+
+## After understanding how a form works (and before moving)
+
+Note that FORMS that take info from the user and will store it to pass it to parent component at same point in time
+
+So after understanding Forms a bit better...I created:
+
+1. ToDoForm.js
+2. ToDoList.js
+3. ToDo.js 
+    First i did this component as a class, but there is no need for that actually so just used a function 
+    //this is a very simple way to pass the props from the parent component
+    export default props =>  
+    <div>
+        {props.todo.text}
+    </div>
+    Now to be able to cross this ToDO off, you need to change style and change status
+    
