@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDoForm from './ToDoForm';
 import ToDo from './ToDo';
-import { Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 
@@ -9,7 +9,8 @@ import { Card } from 'semantic-ui-react';
 class ToDoList extends React.Component {
 
     state = {
-        todos: []
+        todos: [], 
+        showTodos: "all",
     }
 
     //the ...this.state.todos will copy the array and i will be adding the todo at the beginnign of that array
@@ -36,9 +37,31 @@ class ToDoList extends React.Component {
         })
     }    
 
+    //will thake care of what the user wants to select
+    handleSelection = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     render() {
         
-        const { todos } = this.state;
+        /* This was valid when we wanted to display all the todos, now we want to change the type of todos that are displayed */
+        /* const { todos } = this.state; */
+
+        const { showTodos } = this.state;
+
+        let todos = [];
+
+        /* this will set up the todos array depending on the status change that will be change on the click of the button */
+        if (showTodos === "all") {
+            todos = this.state.todos;
+        } else if (showTodos === "active") {
+            todos = this.state.todos.filter(todo => !todo.complete)
+        } else {
+            todos = this.state.todos.filter(todo => todo.complete)
+        }
+
 
         return (
             <div>
@@ -57,9 +80,9 @@ class ToDoList extends React.Component {
                     To do's active: {todos.filter(todo => !todo.complete).length}
                 </div>   
                 <div>
-                    <button>all</button>
-                    <button>active</button>
-                    <button>complete</button>
+                    <Button onClick={this.handleSelection} name="showTodos" value="all" >all</Button>
+                    <Button onClick={this.handleSelection} name="showTodos" value="active" >active</Button>
+                    <Button onClick={this.handleSelection} name="showTodos" value="complete" >complete</Button>
                 </div>    
             </div>
             
