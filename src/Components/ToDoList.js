@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDoForm from './ToDoForm';
 import ToDo from './ToDo';
-import { Button } from 'semantic-ui-react';
+import { Button, Label } from 'semantic-ui-react';
 
 
 
@@ -95,7 +95,7 @@ class ToDoList extends React.Component {
         }
 
         return (
-            <div>
+            <div className='toDoList'>
                 <ToDoForm onSubmit={this.addToDo} />                
                 {/* Displaying all the ToDO's in my page as <ToDoList /> is being rendered on <App/> */}
                 {todos.map(todo =>
@@ -107,25 +107,28 @@ class ToDoList extends React.Component {
                         deleteToDo={() => this.deleteToDo (todo.id)}
                     />
                 )}
-                <div>
+                <div className="toDoListCounter">
+                    
                     {/* Will be a counter for the number of ToDos that are left */}
-                    To do's active: {todos.filter(todo => !todo.complete).length}
+                    <Label>{todos.filter(todo => !todo.complete).length}</Label> total active todo's 
+                    
                 </div>   
-                <div>
+                <div className="toDoListButtons">
                     <Button onClick={this.handleSelection} name="showTodos" value="all" >all</Button>
                     <Button onClick={this.handleSelection} name="showTodos" value="active" >active</Button>
-                    <Button onClick={this.handleSelection} name="showTodos" value="complete" >complete</Button>   
-                    <Button onClick={this.setAllToComplete} color="green" >all done</Button> 
+                    <Button onClick={this.handleSelection} name="showTodos" value="complete" >complete</Button>
+                    {todos.some(todo => todo.complete) ?
+
+                        <Button onClick={this.deleteCompleteToDos} color='red'>delete all complete</Button>
+
+                        :
+                        null
+                    }
+                    <Button onClick={this.setAllToComplete} color="green" >all done</Button>
                 </div>   
                 {/* You only need and should show the button if there are any complete todo's, otherwise you dont show items it 
                 Can use .filter or .some, but better .some as it will exit the "loop" earliear */}
-                {todos.some(todo => todo.complete) ? 
-                <div>
-                    <Button onClick={this.deleteCompleteToDos} color='red'>Delete all complete</Button>
-                </div>
-                :
-                null
-                }
+                
 
             </div>
             
