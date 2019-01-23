@@ -63,3 +63,4 @@ So after understanding Forms a bit better...I created:
     </div>
     Now to be able to cross this ToDO off, you need to change style and change status
     
+Will add more explanations when I am done with stylling

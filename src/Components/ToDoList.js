@@ -11,6 +11,7 @@ class ToDoList extends React.Component {
     state = {
         todos: [], 
         showTodos: "all",
+        toogleAllComplete: true
     }
 
     //the ...this.state.todos will copy the array and i will be adding the todo at the beginnign of that array
@@ -20,7 +21,7 @@ class ToDoList extends React.Component {
         })
     }
 
-    //could I receive (todo) instead of (id)?, need to test this assumption
+    //Updating the state of the ToDo to complete = true and change their styling
     toggleComplete = (id) => {
         this.setState({
             todos: this.state.todos.map(todo => {
@@ -37,7 +38,38 @@ class ToDoList extends React.Component {
         })
     }    
 
-    //will thake care of what the user wants to select
+    //deleting a ToDo from our list , with the filter I will get a new array with all the values with the exeption of the one that I clicked on
+    deleteToDo = (id) => {
+        const { todos } = this.state;
+        this.setState({
+            todos: todos.filter(todo => todo.id !== id)
+        })
+    }
+
+    //delete the CompletedToDos on your list 
+    deleteCompleteToDos = () => {
+        const { todos } = this.state; 
+        this.setState({
+            todos: todos.filter(todo => !todo.complete)
+            /* will keep the items that are not complete as complete is = to true */
+        })
+    }
+
+    //Setting the state of all todo as completed
+    setAllToComplete = () => {
+        const { todos , toogleAllComplete } = this.state;
+
+        this.setState({
+            todos: todos.map(todo => ({
+                ...todo,
+                complete: toogleAllComplete
+            })),
+            toogleAllComplete: !toogleAllComplete
+        })
+    }
+
+
+    //will thake care of what the user wants to select to show: {all} to do list, {active} or {complete}
     handleSelection = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -62,7 +94,6 @@ class ToDoList extends React.Component {
             todos = this.state.todos.filter(todo => todo.complete)
         }
 
-
         return (
             <div>
                 <ToDoForm onSubmit={this.addToDo} />                
@@ -73,6 +104,7 @@ class ToDoList extends React.Component {
                         todo={todo}
                         the toogleComlete will 
                         toggleComplete={() => this.toggleComplete (todo.id)}
+                        deleteToDo={() => this.deleteToDo (todo.id)}
                     />
                 )}
                 <div>
@@ -82,8 +114,19 @@ class ToDoList extends React.Component {
                 <div>
                     <Button onClick={this.handleSelection} name="showTodos" value="all" >all</Button>
                     <Button onClick={this.handleSelection} name="showTodos" value="active" >active</Button>
-                    <Button onClick={this.handleSelection} name="showTodos" value="complete" >complete</Button>
-                </div>    
+                    <Button onClick={this.handleSelection} name="showTodos" value="complete" >complete</Button>   
+                    <Button onClick={this.setAllToComplete} color="green" >all done</Button> 
+                </div>   
+                {/* You only need and should show the button if there are any complete todo's, otherwise you dont show items it 
+                Can use .filter or .some, but better .some as it will exit the "loop" earliear */}
+                {todos.some(todo => todo.complete) ? 
+                <div>
+                    <Button onClick={this.deleteCompleteToDos} color='red'>Delete all complete</Button>
+                </div>
+                :
+                null
+                }
+
             </div>
             
         )
