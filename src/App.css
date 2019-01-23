@@ -1,18 +1,17 @@
 .AppBody {
   text-align: center;
+  
 
 }
 
 .AppMenu {
-  display: inline;
-  position: relative
+  
 }
 
 .AppToDoList {
-  display: inline;
-  position: relative;
-  overflow: hidden;
-  
+  margin: auto;
+  width: 60%;
+  padding-top: 100px;
 }
 
 .AppFooter {
@@ -23,7 +22,6 @@
   bottom: 0;
   width: 100%;
   padding: 10px;
-
 }
 
 .toDoFormInput {
@@ -31,8 +29,8 @@
 }
 
 .toDoList { 
-  margin: auto;
-  width: 60%;
+  
+  
 }
 
 .toDoListCounter {
