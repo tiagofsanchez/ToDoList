@@ -1,13 +1,12 @@
 .AppBody {
   text-align: center;
-
 }
-
 
 .AppToDoList {
   margin: auto;
+  margin-top: 100px;
   width: 60%;
-  padding-top: 100px;
+  
 }
 
 .AppFooter {
@@ -24,15 +23,21 @@
   background-color:#d3d3d3 !important; 
 }
 
-.toDoList { 
-  
-  
-}
-
 .toDoListCounter {
   float: left;
 
 }
 .toDoListButtons {
   float: right;
+}
+
+.toDoListFilters {
+  position: sticky;
+  bottom: 40px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

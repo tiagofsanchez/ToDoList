@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import ToDoList from './Components/ToDoList';
-import { Menu , Container, Label , Segment } from 'semantic-ui-react';
+import { Menu , Container, Label } from 'semantic-ui-react';
 
 
 
