@@ -107,12 +107,14 @@ class ToDoList extends React.Component {
                         deleteToDo={() => this.deleteToDo (todo.id)}
                     />
                 )}
+                
                 <div className="toDoListFilters">
+                    
                     <div className="toDoListCounter">
                         {/* Will be a counter for the number of ToDos that are left */}
-                        <Label>{todos.filter(todo => !todo.complete).length}</Label> total active todo's
-
+                        <Label>{this.state.todos.filter(todo => !this.state.todos.complete).length}</Label> actions left
                     </div>
+                    
                     <div className="toDoListButtons">
                         <Button onClick={this.handleSelection} name="showTodos" value="all" >all</Button>
                         <Button onClick={this.handleSelection} name="showTodos" value="active" >active</Button>
@@ -124,6 +126,8 @@ class ToDoList extends React.Component {
                         }
                         <Button onClick={this.setAllToComplete} color="green" >all done</Button>
                     </div>
+               
+              
                 </div>
                 {/* You only need and should show the button if there are any complete todo's, otherwise you dont show items it 
                 Can use .filter or .some, but better .some as it will exit the "loop" earliear */}
