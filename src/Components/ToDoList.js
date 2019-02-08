@@ -102,7 +102,6 @@ class ToDoList extends React.Component {
                     <ToDo
                         key={todo.id}
                         todo={todo}
-                        the toogleComlete will 
                         toggleComplete={() => this.toggleComplete (todo.id)}
                         deleteToDo={() => this.deleteToDo (todo.id)}
                     />

@@ -27,4 +27,3 @@ You can ceck the youTube video here -> https://www.youtube.com/watch?v=I6IY2TqnP
     </div>
     Now to be able to cross this ToDO off, you need to change style and change status
     
-Will add more explanations when I am done with stylling

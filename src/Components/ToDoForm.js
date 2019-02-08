@@ -13,6 +13,8 @@ class ToDoForm extends React.Component {
         this.setState ({
             [event.target.name]: event.target.value
         })
+        console.log(this.state.text);
+        
     };
    
     handleSubmit = () => {
@@ -42,11 +44,12 @@ class ToDoForm extends React.Component {
                         onChange={this.handleChange}
                         placeholder='todo...'
                     />
+                    
                 </Form.Field>
                 <Form.Button color='blue' type="submit">Add a TODO</Form.Button>
             </Form>
             </Segment>
-           
+          
         )
     }
 }
